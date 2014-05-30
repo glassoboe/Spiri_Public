@@ -8,7 +8,7 @@ __email__  = "info@pleiades.ca"
 from spiri_connect import * #Holds connection information to Spiri
 import struct
 
-BUFFER_SIZE = 64 #Maximum amount of data that can be received
+BUFFER_SIZE = 128 #Maximum amount of data that can be received
 input_buffer = bytearray( BUFFER_SIZE )
 
 
@@ -67,10 +67,13 @@ class Spiri(object):
   def __str__ (self):
     return self.connection_to_spiri.get_connection_info_string()
     
-  def get_all_input(self, pkt_byte_count):
+  def get_all_input(self, pkt_byte_count, IsTCP):
     input_view = memoryview(input_buffer)
     while pkt_byte_count:
-      nBytes = self.connection_to_spiri.tcpSpiriSock.recv_into(input_view, pkt_byte_count)
+      if IsTCP:
+        nBytes = self.connection_to_spiri.tcpSpiriSock.recv_into(input_view, pkt_byte_count)
+      else:
+        nBytes = self.connection_to_spiri.udpSpiriSock.recv_into(input_view, pkt_byte_count)
       input_view = input_view[nBytes:] # slicing views is cheap
       pkt_byte_count -= nBytes
     func_offset = input_buffer.find(b'$$') + 6 #Get the offset of function code
@@ -87,7 +90,7 @@ class Spiri(object):
     if not self.connection_to_spiri.send(struct.pack("!2c3ic", b'$', b'$',packet_size, FUNCTION_CODE, mode, b'^') ):
       return res
     
-    func_offset, param_offset = self.get_all_input(15) #We are expecting 15 bytes from the server
+    func_offset, param_offset = self.get_all_input(15, True) #We are expecting 15 bytes from the server
     (func_code,) = struct.unpack_from( '!i', input_buffer,  func_offset )
     if func_code != FUNCTION_CODE:
       return res
@@ -103,7 +106,7 @@ class Spiri(object):
     if not self.connection_to_spiri.send(struct.pack("!2c3ic", b'$', b'$', packet_size, FUNCTION_CODE, pkt_padding, b'^') ):
       return (res,ThreeAxis(0, 0, 0))
     
-    func_offset, param_offset = self.get_all_input(27) #We are expecting 27 bytes from the server
+    func_offset, param_offset = self.get_all_input(27, True) #We are expecting 27 bytes from the server
     (func_code,) = struct.unpack_from( '!i', input_buffer,  func_offset )
     if func_code != FUNCTION_CODE:
       return (res,ThreeAxis(0, 0, 0))
@@ -122,7 +125,7 @@ class Spiri(object):
     if not self.connection_to_spiri.send(struct.pack("!2c3ic", b'$', b'$', packet_size, FUNCTION_CODE, pkt_padding, b'^') ):
       return (res,ThreeAxis(0, 0, 0))
     
-    func_offset, param_offset = self.get_all_input(27) #We are expecting 27 bytes from the server
+    func_offset, param_offset = self.get_all_input(27, True) #We are expecting 27 bytes from the server
     (func_code,) = struct.unpack_from( '!i', input_buffer,  func_offset )
     if func_code != FUNCTION_CODE:
       return (res,ThreeAxis(0, 0, 0))
@@ -141,7 +144,7 @@ class Spiri(object):
     if not self.connection_to_spiri.send(struct.pack("!2c3ic", b'$', b'$', packet_size, FUNCTION_CODE, pkt_padding, b'^') ):
       return (res, 0.0)
     
-    func_offset, param_offset = self.get_all_input(19) #We are expecting 19 bytes from the server
+    func_offset, param_offset = self.get_all_input(19, True) #We are expecting 19 bytes from the server
     (func_code,) = struct.unpack_from( '!i', input_buffer,  func_offset )
     if func_code != FUNCTION_CODE:
       return (res, 0.0)
@@ -158,7 +161,7 @@ class Spiri(object):
     if not self.connection_to_spiri.send(struct.pack("!2c3ic", b'$', b'$', packet_size, FUNCTION_CODE, pkt_padding, b'^') ):
       return (res, 0.0)
     
-    func_offset, param_offset = self.get_all_input(19) #We are expecting 19 bytes from the server
+    func_offset, param_offset = self.get_all_input(19, True) #We are expecting 19 bytes from the server
     (func_code,) = struct.unpack_from( '!i', input_buffer,  func_offset )
     if func_code != FUNCTION_CODE:
       return (res, 0.0)
@@ -175,7 +178,7 @@ class Spiri(object):
     if not self.connection_to_spiri.send(struct.pack("!2c3ic", b'$', b'$', packet_size, FUNCTION_CODE, pkt_padding, b'^') ):
       return (res, 0.0)
     
-    func_offset, param_offset = self.get_all_input(19) #We are expecting 19 bytes from the server
+    func_offset, param_offset = self.get_all_input(19, True) #We are expecting 19 bytes from the server
     (func_code,) = struct.unpack_from( '!i', input_buffer,  func_offset )
     if func_code != FUNCTION_CODE:
       return (res, 0.0)
@@ -192,7 +195,7 @@ class Spiri(object):
     if not self.connection_to_spiri.send(struct.pack("!2c3ic", b'$', b'$', packet_size, FUNCTION_CODE, pkt_padding, b'^') ):
       return (res, 0, 0, 0, 0)
     
-    func_offset, param_offset = self.get_all_input(31) #We are expecting 31 bytes from the server
+    func_offset, param_offset = self.get_all_input(31, True) #We are expecting 31 bytes from the server
     (func_code,) = struct.unpack_from( '!i', input_buffer,  func_offset )
     if func_code != FUNCTION_CODE:
       return (res, 0, 0, 0, 0)
@@ -211,7 +214,7 @@ class Spiri(object):
     if not self.connection_to_spiri.send(struct.pack("!2c3ic", b'$', b'$', packet_size, FUNCTION_CODE, motor, b'^') ):
       return (res, 0.0)
     
-    func_offset, param_offset = self.get_all_input(19) #We are expecting 19 bytes from the server
+    func_offset, param_offset = self.get_all_input(19, True) #We are expecting 19 bytes from the server
     (func_code,) = struct.unpack_from( '!i', input_buffer,  func_offset )
     if func_code != FUNCTION_CODE:
       return (res, 0.0)
@@ -228,7 +231,7 @@ class Spiri(object):
     if not self.connection_to_spiri.send(struct.pack("!2c3ic", b'$', b'$', packet_size, FUNCTION_CODE, pkt_padding, b'^') ):
       return (res, 0, 0, 0, 0)
     
-    func_offset, param_offset = self.get_all_input(31) #We are expecting 31 bytes from the server
+    func_offset, param_offset = self.get_all_input(31, True) #We are expecting 31 bytes from the server
     (func_code,) = struct.unpack_from( '!i', input_buffer,  func_offset )
     if func_code != FUNCTION_CODE:
       return (res, 0, 0, 0, 0)
@@ -238,7 +241,7 @@ class Spiri(object):
     (c,) = struct.unpack_from( '!f', input_buffer,  param_offset + 12 )
     (d,) = struct.unpack_from( '!f', input_buffer,  param_offset + 16 )
     return (res, a, b, c, d)
-    
+  
   def configure_stabilization(self, x, y):
     """Set PID configuration data - rewrites the constant values in the PID controller for stabilization.
     Expects 2 PID tuples of 3 floats (p, i, d)."""
@@ -248,7 +251,7 @@ class Spiri(object):
     if not self.connection_to_spiri.send(struct.pack("!2c2i6fc", b'$', b'$', packet_size, FUNCTION_CODE, x[0], x[1], x[2], y[0], y[1], y[2], b'^') ):
       return res
     
-    func_offset, param_offset = self.get_all_input(15) #We are expecting 15 bytes from the server
+    func_offset, param_offset = self.get_all_input(15, True) #We are expecting 15 bytes from the server
     (func_code,) = struct.unpack_from( '!i', input_buffer,  func_offset )
     if func_code != FUNCTION_CODE:
       return res
@@ -265,7 +268,7 @@ class Spiri(object):
     if not self.connection_to_spiri.send(struct.pack("!2c3ic", b'$', b'$', packet_size, FUNCTION_CODE, pkt_padding, b'^') ):
       return (res,ThreeAxis(0, 0, 0))
     
-    func_offset, param_offset = self.get_all_input(27) #We are expecting 27 bytes from the server
+    func_offset, param_offset = self.get_all_input(27, True) #We are expecting 27 bytes from the server
     (func_code,) = struct.unpack_from( '!i', input_buffer,  func_offset )
     if func_code != FUNCTION_CODE:
       return (res,ThreeAxis(0, 0, 0))
@@ -283,7 +286,7 @@ class Spiri(object):
     if not self.connection_to_spiri.send(struct.pack("!2c2i3fc", b'$', b'$', packet_size, FUNCTION_CODE, pid.p, pid.d, pid.i, b'^') ):
       return res
     
-    func_offset, param_offset = self.get_all_input(15) #We are expecting 15 bytes from the server
+    func_offset, param_offset = self.get_all_input(15, True) #We are expecting 15 bytes from the server
     (func_code,) = struct.unpack_from( '!i', input_buffer,  func_offset )
     if func_code != FUNCTION_CODE:
       return res
@@ -299,7 +302,7 @@ class Spiri(object):
     if not self.connection_to_spiri.send(struct.pack("!2c3ic", b'$', b'$', packet_size, FUNCTION_CODE, pkt_padding, b'^') ):
       return (res,ThreeAxis(0, 0, 0))
     
-    func_offset, param_offset = self.get_all_input(27) #We are expecting 27 bytes from the server
+    func_offset, param_offset = self.get_all_input(27, True) #We are expecting 27 bytes from the server
     (func_code,) = struct.unpack_from( '!i', input_buffer,  func_offset )
     if func_code != FUNCTION_CODE:
       return (res,ThreeAxis(0, 0, 0))
@@ -317,7 +320,7 @@ class Spiri(object):
     if not self.connection_to_spiri.send(struct.pack("!2c2ifc", b'$', b'$', packet_size, FUNCTION_CODE, altitude, b'^') ):
       return res
     
-    func_offset, param_offset = self.get_all_input(15) #We are expecting 15 bytes from the server
+    func_offset, param_offset = self.get_all_input(15, True) #We are expecting 15 bytes from the server
     (func_code,) = struct.unpack_from( '!i', input_buffer,  func_offset )
     if func_code != FUNCTION_CODE:
       return res
@@ -332,7 +335,7 @@ class Spiri(object):
     if not self.connection_to_spiri.send(struct.pack("!2c2i2fc", b'$', b'$', packet_size, FUNCTION_CODE, x, y, b'^') ):
       return res
     
-    func_offset, param_offset = self.get_all_input(15) #We are expecting 15 bytes from the server
+    func_offset, param_offset = self.get_all_input(15, True) #We are expecting 15 bytes from the server
     (func_code,) = struct.unpack_from( '!i', input_buffer,  func_offset )
     if func_code != FUNCTION_CODE:
       return res
@@ -347,7 +350,7 @@ class Spiri(object):
     if not self.connection_to_spiri.send(struct.pack("!2c2i2fc", b'$', b'$', packet_size, FUNCTION_CODE, x, y, b'^') ):
       return res
     
-    func_offset, param_offset = self.get_all_input(15) #We are expecting 15 bytes from the server
+    func_offset, param_offset = self.get_all_input(15, True) #We are expecting 15 bytes from the server
     (func_code,) = struct.unpack_from( '!i', input_buffer,  func_offset )
     if func_code != FUNCTION_CODE:
       return res
@@ -363,7 +366,7 @@ class Spiri(object):
     if not self.connection_to_spiri.send(struct.pack("!2c3ic", b'$', b'$',packet_size, FUNCTION_CODE, reg_flight_ctrl, b'^') ):
       return res
     
-    func_offset, param_offset = self.get_all_input(15) #We are expecting 15 bytes from the server
+    func_offset, param_offset = self.get_all_input(15, True) #We are expecting 15 bytes from the server
     (func_code,) = struct.unpack_from( '!i', input_buffer,  func_offset )
     if func_code != FUNCTION_CODE:
       return res
@@ -402,7 +405,7 @@ class Spiri(object):
       "range": 0,
       "pressure": 0})
     
-    func_offset, param_offset = self.get_all_input(59) #We are expecting 59 bytes from the server
+    func_offset, param_offset = self.get_all_input(59, True) #We are expecting 59 bytes from the server
     (func_code,) = struct.unpack_from( '!i', input_buffer,  func_offset )
     if func_code != FUNCTION_CODE:
       return (res,{"accel_data": ThreeAxis(0, 0, 0),
@@ -438,7 +441,7 @@ class Spiri(object):
     if not self.connection_to_spiri.send(struct.pack("!2c3ic", b'$', b'$', packet_size, FUNCTION_CODE, pkt_padding, b'^') ):
       return (res,ThreeAxis(0, 0, 0))
     
-    func_offset, param_offset = self.get_all_input(27) #We are expecting 27 bytes from the server
+    func_offset, param_offset = self.get_all_input(27, True) #We are expecting 27 bytes from the server
     (func_code,) = struct.unpack_from( '!i', input_buffer,  func_offset )
     if func_code != FUNCTION_CODE:
       return (res,ThreeAxis(0, 0, 0))
@@ -457,7 +460,7 @@ class Spiri(object):
     if not self.connection_to_spiri.send(struct.pack("!2c3ic", b'$', b'$', packet_size, FUNCTION_CODE, pkt_padding, b'^') ):
       return (res,ThreeAxis(0, 0, 0))
     
-    func_offset, param_offset = self.get_all_input(27) #We are expecting 27 bytes from the server
+    func_offset, param_offset = self.get_all_input(27, True) #We are expecting 27 bytes from the server
     (func_code,) = struct.unpack_from( '!i', input_buffer,  func_offset )
     if func_code != FUNCTION_CODE:
       return (res,ThreeAxis(0, 0, 0))
@@ -476,7 +479,7 @@ class Spiri(object):
     if not self.connection_to_spiri.send(struct.pack("!2c3ic", b'$', b'$', packet_size, FUNCTION_CODE, pkt_padding, b'^') ):
       return (res, 0.0, 0.0, 0.0 ,0.0, 0.0)
     
-    func_offset, param_offset = self.get_all_input(35) #We are expecting 35 bytes from the server
+    func_offset, param_offset = self.get_all_input(35, True) #We are expecting 35 bytes from the server
     (func_code,) = struct.unpack_from( '!i', input_buffer,  func_offset )
     if func_code != FUNCTION_CODE:
       return (res, 0.0, 0.0, 0.0 ,0.0, 0.0)
@@ -488,17 +491,114 @@ class Spiri(object):
     (HDOP,) = struct.unpack_from( '!f', input_buffer,  param_offset + 20 )
     return (res, x, y, z, UTC_time, HDOP)
     
-  def set_Mode_one_flight_parameters(self, pitch_angle, roll_angle, yaw_angle, rpm):
-    """Set Attitude - sets the X and Y angle from flat the robot should move towards. Expects 2 floats."""
+  def set_Mode_one_flight_parameters(self, pitch_angle_f, roll_angle_f, yaw_angle_f, rpm_f):
+    """Set orientation, and avg RPM of the robot should move towards. Expects 4 floats."""
     res = -5
     packet_size = 27
     FUNCTION_CODE = 21
-    if not self.connection_to_spiri.send(struct.pack("!2c2i4fc", b'$', b'$', packet_size, FUNCTION_CODE, pitch_angle, roll_angle, yaw_angle, rpm, b'^') ):
+    pitch_angle = int(pitch_angle_f*10)#Multiply by 10 and convert to int16. Flight controller will divide by 10 and convert back to float
+    roll_angle = int(roll_angle_f*10)
+    yaw_angle = int(yaw_angle_f*10)
+    rpm = int(rpm_f)#Convert to int, flight controller will convert back to float
+    if not self.connection_to_spiri.UDPsend(struct.pack("!2c2i4ic", b'$', b'$', packet_size, FUNCTION_CODE, pitch_angle, roll_angle, yaw_angle, rpm, b'^') ):
       return res
     
-    func_offset, param_offset = self.get_all_input(15) #We are expecting 15 bytes from the server
+    """func_offset, param_offset = self.get_all_input(15, False) #We are expecting 15 bytes from the server via UDP
     (func_code,) = struct.unpack_from( '!i', input_buffer,  func_offset )
     if func_code != FUNCTION_CODE:
       return res
+    (res,) = struct.unpack_from( '!i', input_buffer,  param_offset )"""
+    res = 0
+    return res 
+    
+    
+  def get_telemetry(self):
+    """Get telemetry"""
+    res = -5
+    packet_size = 15
+    FUNCTION_CODE = 22
+    pkt_padding = 0
+    if not self.connection_to_spiri.send(struct.pack("!2c3ic", b'$', b'$', packet_size, FUNCTION_CODE, pkt_padding, b'^') ):
+      return res, (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    
+    func_offset, param_offset = self.get_all_input(91,True) #We are expecting 91 bytes from the server
+    (func_code,) = struct.unpack_from( '!i', input_buffer,  func_offset )
+    if func_code != FUNCTION_CODE:
+      return res, (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+      
     (res,) = struct.unpack_from( '!i', input_buffer,  param_offset )
+    (accx,) = struct.unpack_from( '!f', input_buffer,  param_offset + 4 )
+    (accy,) = struct.unpack_from( '!f', input_buffer,  param_offset + 8 )
+    (accz,) = struct.unpack_from( '!f', input_buffer,  param_offset + 12 )
+    (gyrx,) = struct.unpack_from( '!f', input_buffer,  param_offset + 16 )
+    (gyry,) = struct.unpack_from( '!f', input_buffer,  param_offset + 20 )
+    (gyrz,) = struct.unpack_from( '!f', input_buffer,  param_offset + 24 )
+    (magx,) = struct.unpack_from( '!f', input_buffer,  param_offset + 28 )
+    (magy,) = struct.unpack_from( '!f', input_buffer,  param_offset + 32 )
+    (magz,) = struct.unpack_from( '!f', input_buffer,  param_offset + 36 )
+    (pressure,) = struct.unpack_from( '!f', input_buffer,  param_offset + 40 )
+    (acoustic_range,) = struct.unpack_from( '!f', input_buffer,  param_offset + 44)
+    (OpticalFlowX,) = struct.unpack_from( '!f', input_buffer,  param_offset + 48)
+    (OpticalFlowY,) = struct.unpack_from( '!f', input_buffer,  param_offset + 52)
+    (Motor1,) = struct.unpack_from( '!f', input_buffer,  param_offset + 56)
+    (Motor2,) = struct.unpack_from( '!f', input_buffer,  param_offset + 60)
+    (Motor3,) = struct.unpack_from( '!f', input_buffer,  param_offset + 64)
+    (Motor4,) = struct.unpack_from( '!f', input_buffer,  param_offset + 68)
+    (BatteryVoltage,) = struct.unpack_from( '!f', input_buffer,  param_offset + 72)
+    (BatteryCurrent,) = struct.unpack_from( '!f', input_buffer,  param_offset + 76)
+    
+    
+    return res,(accx, accy, accz, gyrx, gyry, gyrz, magx, magy, magz, pressure, 
+    acoustic_range, OpticalFlowX, OpticalFlowY, Motor1 ,Motor2 ,Motor3 ,Motor4 ,BatteryVoltage ,BatteryCurrent)
+    
+  def get_angles_and_sensors(self):
+    """Get telemetry"""
+    res = -5
+    packet_size = 15
+    FUNCTION_CODE = 23
+    pkt_padding = 0
+    if not self.connection_to_spiri.send(struct.pack("!2c3ic", b'$', b'$', packet_size, FUNCTION_CODE, pkt_padding, b'^') ):
+      return res, (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    
+    func_offset, param_offset = self.get_all_input(63, True) #We are expecting 91 bytes from the server
+    (func_code,) = struct.unpack_from( '!i', input_buffer,  func_offset )
+    if func_code != FUNCTION_CODE:
+      return res, (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+      
+    (res,) = struct.unpack_from( '!i', input_buffer,  param_offset )
+    (accx,) = struct.unpack_from( '!f', input_buffer,  param_offset + 4 )
+    (accy,) = struct.unpack_from( '!f', input_buffer,  param_offset + 8 )
+    (accz,) = struct.unpack_from( '!f', input_buffer,  param_offset + 12 )
+    (gyrx,) = struct.unpack_from( '!f', input_buffer,  param_offset + 16 )
+    (gyry,) = struct.unpack_from( '!f', input_buffer,  param_offset + 20 )
+    (gyrz,) = struct.unpack_from( '!f', input_buffer,  param_offset + 24 )
+    (currentRollAngle,) = struct.unpack_from( '!f', input_buffer,  param_offset + 28 )
+    (currentPitchAngle,) = struct.unpack_from( '!f', input_buffer,  param_offset + 32 )
+    (Motor1,) = struct.unpack_from( '!f', input_buffer,  param_offset + 36 )
+    (Motor2,) = struct.unpack_from( '!f', input_buffer,  param_offset + 40 )
+    (Motor3,) = struct.unpack_from( '!f', input_buffer,  param_offset + 44)
+    (Motor4,) = struct.unpack_from( '!f', input_buffer,  param_offset + 48)
+    
+    
+    return res,(accx, accy, accz, gyrx, gyry, gyrz, currentRollAngle, currentPitchAngle,
+    Motor1 ,Motor2 ,Motor3 ,Motor4)
+    
+  def set_speed_of_all_motors(self, motor1_f, motor2_f, motor3_f, motor4_f):
+    """Set the speed of the motors"""
+    res = -5
+    packet_size = 27
+    FUNCTION_CODE = 24
+    motor1 = int(motor1_f)
+    motor2 = int(motor2_f)
+    motor3 = int(motor3_f)
+    motor4 = int(motor4_f)
+    if not self.connection_to_spiri.UDPsend(struct.pack("!2c2i4ic", b'$', b'$', packet_size, FUNCTION_CODE, motor1, motor2, motor3, motor4, b'^') ):
+      return res
+    #Do not receive any response since it may be lost and can cause the client to hang
+    """func_offset, param_offset = self.get_all_input(15, False) #We are expecting 15 bytes from the server via UDP
+    (func_code,) = struct.unpack_from( '!i', input_buffer,  func_offset )
+    if func_code != FUNCTION_CODE:
+      return res
+    (res,) = struct.unpack_from( '!i', input_buffer,  param_offset )"""
+    res = 0
     return res 

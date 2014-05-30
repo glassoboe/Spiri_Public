@@ -10,8 +10,10 @@ class Spiri_connect(object):
   def __init__(self, spiri_server_addr):
     self.ip_addr = spiri_server_addr
     self.addr_and_port = (self.ip_addr, PORT)
-    self.tcpSpiriSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    self.tcpSpiriSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #TCP socket for low prio commands
     self.tcpSpiriSock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, True) #Disable Nagle's Algorithm
+    self.udpSpiriSock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) #UDP socket for high prio commands
+    #self.udpSpiriSock.bind('', PORT) #This may not be needed
     try:
       self.tcpSpiriSock.connect(self.addr_and_port)
       self.__connection_state = True
@@ -56,3 +58,8 @@ class Spiri_connect(object):
     except socket.error as e:
       self.__connection_state = False
       return False
+  
+  def UDPsend(self,data_to_send):
+    self.udpSpiriSock.sendto(data_to_send, self.addr_and_port)
+    return True
+    
