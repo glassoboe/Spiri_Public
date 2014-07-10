@@ -29,16 +29,16 @@ catkin_init_workspace
 
 echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 source ~/.bashrc
-#Install git
-
-sudo apt-get install git
-
 
 # Download Spiri simulator
 
 cd ~/catkin_ws/src
 
-git clone https://github.com/Pleiades-Spiri/Simulator.git -b alpha-release
+wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/installation_simulator/Simulator-1.0.tar.gz
+
+tar -zxvf Simulator-1.0.tar.gz 
+
+mv -r Simulator-1.0 ./Simulator
 
 cd ..
 
