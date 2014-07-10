@@ -29,6 +29,10 @@ catkin_init_workspace
 
 echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 source ~/.bashrc
+#Install git
+
+sudo apt-get install git
+
 
 # Download Spiri simulator
 
