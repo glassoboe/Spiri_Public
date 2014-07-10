@@ -55,3 +55,9 @@ echo "export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:~/catkin_ws/src/Simulator/spir
 
 
 
+
+
+
+
+
+

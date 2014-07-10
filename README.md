@@ -212,6 +212,15 @@ Add this command to your bashrc
 export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:~/catkin_ws/src/gazebo_models
 ```
 
+or you can run this script
+
+```bash
+
+wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/installation_simulator/gazebo_models.sh
+chmod +x gazebo_models.sh
+./gazebo_models.sh
+
+```
 Restart your terminal and it should fix the error
 
 ## General ROS commands
