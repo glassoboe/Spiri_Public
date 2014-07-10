@@ -35,6 +35,8 @@ mv Simulator-1.0 ./Simulator
 
 cd ..
 
+#Build the system
+
 catkin_make
 
 # Set Gazebo Model Path
