@@ -29,6 +29,9 @@ catkin_make
 echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 
+sudo rosdep init
+
+rosdep update
 # Download Spiri simulator
 
 cd ~/catkin_ws/src
