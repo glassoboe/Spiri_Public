@@ -104,7 +104,7 @@ export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:~/catkin_ws/src/Simulator/spiri_desc
 ```
 
 ## Commands
-
+Please restart the terminal and then you can launch all the commands.
 
 To launch Spiri in an empty world
 
