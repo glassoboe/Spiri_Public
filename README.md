@@ -27,10 +27,14 @@ You can install using scripts on Ubuntu 12.04 or install ROS, Gazebo independent
 
 ```bash
 wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/installation_simulator/installation.sh
-chmod +x installation.sh
+wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/installation_simulator/installation_simulator.sh
+chmod +x installation.sh installation_simulator.sh
 ./installation.sh
 ```
-
+Restart the terminal and run 
+```bash
+./installation_simulator.sh
+```
 This will install ROS, create a ROS workspace as well as download the Simulator code.
 
 It will require your password to install packages. 
