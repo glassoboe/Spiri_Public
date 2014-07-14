@@ -13,9 +13,17 @@ It contains the following functionalities-:
 
 The code has been tested on ROS Hydro and Ubuntu 12.04
 
+## System Requirements
+
+Currently the Simulator works only on Ubuntu. ROS Hydro is offically supported for Ubuntu 12.04, 12.10, 13.04. 
+
+We are in the process of testing the Simulator on other variants of Linux distributions, Windows and Mac. 
+
 ## Installation instructions
 
-### Install using a script
+You can install using scripts on Ubuntu 12.04 or install ROS, Gazebo independently. 
+
+### Install using a script on Ubuntu 12.04
 
 ```bash
 wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/installation_simulator/installation.sh
