@@ -43,7 +43,7 @@ Jump to the command section.
 
 ### Install different components independently 
 
-If you have installed using a script you dont need to do this.
+If you have installed using a script you dont need to do this. If you already have ROS and Gazebo installed jump to "Get the Simulator" section.
 
 - Install ROS
 
@@ -69,7 +69,7 @@ http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment
 
 After this step there should be a folder called as catkin_ws
 
-- Get the Simulator
+- Get the Simulator 
 
 ```bash
 cd catkin_ws/src
