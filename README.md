@@ -108,6 +108,7 @@ source /opt/ros/hydro/setup.bash
 export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:~/catkin_ws/src/Simulator/spiri_description/models
 ```
 ## Update the Simulator
+This is just for users who have previously installed Alpha 1.0 version. 
 
 ```bash
 wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/Simulator-alpha-1.1/installation_upgrade.sh
