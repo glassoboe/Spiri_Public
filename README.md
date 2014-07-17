@@ -25,7 +25,7 @@ We are in the process of testing the Simulator on other variants of Linux distri
 ```bash
 wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/Simulator-alpha-1.1/installation_upgrade.sh
 ```
-This will update Spiris' simulator. Now you can jump to the Commands section. 
+This will update Spiris' simulator. Now you can jump to the [commands](#Commands) section.
 ## Installation instructions
 
 You can install using scripts on Ubuntu 12.04 or install ROS, Gazebo independently. If you already have tried Spiri's Simulator jump to Update the Simulator section.
