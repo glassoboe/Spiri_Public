@@ -17,11 +17,11 @@ case $yn in
 
 		cd ~/catkin_ws/src
 		# bump the version number
-		wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/Simulator-alpha-1.1/Simulator-1.1.tar.gz
+		wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/Simulator-alpha-1.1/Simulator-1.1.1.tar.gz
 
-		tar -zxvf Simulator-1.1.tar.gz 
+		tar -zxvf Simulator-1.1.1.tar.gz 
 
-		mv Simulator-1.1 ./Simulator
+		mv Simulator-1.1.1 ./Simulator
 
 		cd ..
 
