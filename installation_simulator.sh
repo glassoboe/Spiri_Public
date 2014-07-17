@@ -23,9 +23,9 @@ cd ~/catkin_ws/src
 
 wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/Simulator-alpha-1.1/Simulator-1.1.1.tar.gz
 
-tar -zxvf Simulator-1.1.1.tar.gz 
+tar -zxvf Simulator-1.1.1.tar.gz
 
-mv Simulator-1.1 ./Simulator
+mv Simulator-1.1.1 ./Simulator
 
 cd ..
 
@@ -36,5 +36,3 @@ catkin_make
 # Set Gazebo Model Path
 
 echo "export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:~/catkin_ws/src/Simulator/spiri_description/models" >> ~/.bashrc
-
-

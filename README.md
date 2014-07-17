@@ -11,6 +11,8 @@ It contains the following functionalities-:
 
 - Control Spiri in the simulator by a joystick.
 
+- Send goals and access the sensors using the API and ROS
+
 The code has been tested on ROS Hydro and Ubuntu 12.04
 
 ## System Requirements
@@ -20,18 +22,13 @@ Currently the Simulator works only on Ubuntu. ROS Hydro is offically supported f
 We are in the process of testing the Simulator on other variants of Linux distributions, Windows and Mac.
 
 
-## Update the Simulator
 
-```bash
-wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/Simulator-alpha-1.1/installation_upgrade.sh
-```
-This will update Spiris' simulator. Now you can jump to the commands section.
 ## Installation instructions
 
 You can install using scripts on Ubuntu 12.04 or install ROS, Gazebo independently. If you already have tried Spiri's Simulator jump to Update the Simulator section.
 
 
-### Install using a script on Ubuntu 12.04
+### Install using a script on Ubuntu 12.04/12.10/13.04
 
 ```bash
 wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/Simulator-alpha-1.1/installation.sh
@@ -110,73 +107,124 @@ source /opt/ros/hydro/setup.bash
 
 export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:~/catkin_ws/src/Simulator/spiri_description/models
 ```
+## Update the Simulator
 
-## Commands
-Please restart the terminal and then you can launch all the commands.
+```bash
+wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/Simulator-alpha-1.1/installation_upgrade.sh
+chmod +x installation_upgrade.sh
+./installation_upgrade.sh
+```
+This will update Spiris' simulator. Now you can jump to the Run the simulator section.
 
-To launch Spiri in an empty world
+## Install on Windows -- Coming soon
+
+We will provide a virtual image that will contain Ubuntu 12.04 with ROS and Spiri’s simulator installed on it. You can run the virtual image using VMware player which is available free of cost.
+
+## Install on Mac -- Coming soon
+
+We will have scripts to install Spiri’s simulator on Mac.
+
+We will provide a virtual image that will contain Ubuntu 12.04 with ROS and Spiri’s simulator installed on it. You can run the virtual image using VMware fusion.
+
+## Run the Simulator
+Please restart the terminal and then you will be able to run the simulator.
+
+### Spawn Spiri with all its sensors in a world
+
+- To launch Spiri in an empty world
 
 ```bash
 roslaunch spiri_description spiri_empty_world.launch
 ```
 
-To launch Spiri in Citadel Hill
+- To launch Spiri in Citadel Hill
 
 ```bash
 roslaunch spiri_description spiri_citadel.launch
 ```
 
+### Spawn Spiri with all its sensors and the ability to send goals
+
+```bash
+roslaunch spiri_description move_it_spiri.launch
+```
+This launches Spiri in an empty world with the ability to receive goals and execute it.
+
+Goals can be sent using our API or ROS.
+
+
+### Send goals
+
+#### API
+
+There are example scripts that are present in the ~/catkin_ws/Simulator/examples folder.
+
+**send_goals.py** shows how to send a goal to Spiri.
+
+**read_sensors.py** shows how to read different sensors of Spiri.
+
+Currently the API gives access to all the sensor data provided by Spiri. We will support other languages like C++,Java before the final release.
+
+#### ROS
+
+Spiri can also be controlled using the ROS API.
+
+
+
+### Fly Spiri
+
 Control Spiri with a joystick
 
-Xbox controller
+- Xbox controller
 
 ```bash
 roslaunch spiri_teleop xbox_controller.launch
 ```
 
-Logitech Gamepad
+- Logitech Gamepad
 
 ```bash
 roslaunch spiri_teleop logitech_gamepad.launch
 ```  
 
+- Using Keyboard
 
-Script to process the Depth Map
+```bash
+roslaunch spiri_teleop keyboard_teleop.launch
+```
+
+### Script to process the Depth Map
+
+- Run the depth map algorithm first
 
 ```bash
 ROS_NAMESPACE=stereo rosrun stereo_image_proc stereo_image_proc _approximate_sync:=True _queue_size:=10
 ```
 
-View the Depth Map
+- View the Depth Map
 
 ```bash
 rosrun image_view stereo_view stereo:=/stereo image:=image_rect_color _approximate_sync:=True _queue_size:=10
 ```
 
-View the front left camera
+### View the camera images
+
+- View the front left camera
 
 ```bash
 rosrun image_view image_view image:=/stereo/left/image_raw
 ```
 
-View the front right camera
+- View the front right camera
 
 ```bash
 rosrun image_view image_view image:=/stereo/right/image_raw
 ```
 
-View the bottom facing camera
+- View the bottom facing camera
 
 ```bash
 rosrun image_view image_view image:=/downward_cam/camera/image
-```
-
-## To visualize the robot and point cloud data in rviz
-
-```bash
-roscd spiri_description
-
-rosrun rviz rviz -d spiri_pointcloud.rviz
 ```
 
 ## Nodes
