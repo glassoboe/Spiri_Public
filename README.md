@@ -1,11 +1,12 @@
 #Simulator
 
-# For the latest relase please go to the following link
+## For the latest relase please go to the following link
 
 https://github.com/Pleiades-Spiri/Spiri_Public/tree/Simulator-alpha-1.1
 
 The latest instructions are in the Readme.md. 
 
+## Introduction
 
 This branch contains the alpha release of the simulator.
 
