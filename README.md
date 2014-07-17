@@ -15,33 +15,41 @@ The code has been tested on ROS Hydro and Ubuntu 12.04
 
 ## System Requirements
 
-Currently the Simulator works only on Ubuntu. ROS Hydro is offically supported for Ubuntu 12.04, 12.10, 13.04. 
+Currently the Simulator works only on Ubuntu. ROS Hydro is offically supported for Ubuntu 12.04, 12.10, 13.04.
 
-We are in the process of testing the Simulator on other variants of Linux distributions, Windows and Mac. 
+We are in the process of testing the Simulator on other variants of Linux distributions, Windows and Mac.
 
+
+## Update the Simulator
+
+```bash
+wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/Simulator-alpha-1.1/installation_upgrade.sh
+```
+This will update Spiris' simulator. Now you can jump to the Commands section. 
 ## Installation instructions
 
-You can install using scripts on Ubuntu 12.04 or install ROS, Gazebo independently. 
+You can install using scripts on Ubuntu 12.04 or install ROS, Gazebo independently. If you already have tried Spiri's Simulator jump to Update the Simulator section.
+
 
 ### Install using a script on Ubuntu 12.04
 
 ```bash
-wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/installation_simulator/installation.sh
-wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/installation_simulator/installation_simulator.sh
+wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/Simulator-alpha-1.1/installation.sh
+wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/Simulator-alpha-1.1/installation_simulator.sh
 chmod +x installation.sh installation_simulator.sh
 ./installation.sh
 ```
-Restart the terminal and run 
+Restart the terminal and run
 ```bash
 ./installation_simulator.sh
 ```
 This will install ROS, create a ROS workspace as well as download the Simulator code.
 
-It will require your password to install packages. 
+It will require your password to install packages.
 
 Jump to the command section.
 
-### Install different components independently 
+### Install different components independently
 
 If you have installed using a script you dont need to do this. If you already have ROS and Gazebo installed jump to "Get the Simulator" section.
 
@@ -69,14 +77,14 @@ http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment
 
 After this step there should be a folder called as catkin_ws
 
-- Get the Simulator 
+- Get the Simulator
 
 ```bash
 cd catkin_ws/src
 
-wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/installation_simulator/Simulator-1.0.tar.gz
+wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/Simulator-alpha-1.1/Simulator-1.0.tar.gz
 
-tar -zxvf Simulator-1.0.tar.gz 
+tar -zxvf Simulator-1.0.tar.gz
 
 mv Simulator-1.0 ./Simulator
 
@@ -120,7 +128,7 @@ roslaunch spiri_description spiri_citadel.launch
 
 Control Spiri with a joystick
 
-Xbox controller 
+Xbox controller
 
 ```bash
 roslaunch spiri_teleop xbox_controller.launch
@@ -176,7 +184,7 @@ rosrun rviz rviz -d spiri_pointcloud.rviz
 ### gazebo
 Launches spiri in a world with all its sensors
 
-#### Subscribed topics 
+#### Subscribed topics
 
 - /cmd_vel
 - /wind
@@ -228,7 +236,7 @@ or you can run this script
 
 ```bash
 
-wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/installation_simulator/gazebo_models.sh
+wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/Simulator-alpha-1.1/gazebo_models.sh
 chmod +x gazebo_models.sh
 ./gazebo_models.sh
 
@@ -243,7 +251,7 @@ To list all ROS topics
 rostopic list
 ```
 
-To view any ROS topic 
+To view any ROS topic
 ```bash
 rostopic echo topic_name
 ```
