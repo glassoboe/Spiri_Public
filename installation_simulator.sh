@@ -21,11 +21,11 @@ rosdep update
 
 cd ~/catkin_ws/src
 
-wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/installation_simulator/Simulator-1.0.tar.gz
+wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/Simulator-alpha-1.1/Simulator-1.1.tar.gz
 
-tar -zxvf Simulator-1.0.tar.gz 
+tar -zxvf Simulator-1.1.tar.gz 
 
-mv Simulator-1.0 ./Simulator
+mv Simulator-1.1 ./Simulator
 
 cd ..
 
