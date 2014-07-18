@@ -25,7 +25,7 @@ wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/Simulator-alpha-1.1/Simu
 
 tar -zxvf Simulator-1.1.1.tar.gz
 
-mv Simulator-1.1.1 ./Simulator
+mv Simulator-1.1.3 ./Simulator
 
 cd ..
 

@@ -12,7 +12,7 @@ case $yn in
 		rm -r ~/catkin_ws/src/Simulator
 		# lower the version number
 		rm ~/catkin_ws/src/Simulator-1.0.tar.gz
-
+		rm ~/catkin_ws/src/Simulator-1.1.1.tar.gz
 		#get the new Simulator
 
 		cd ~/catkin_ws/src
@@ -21,7 +21,7 @@ case $yn in
 
 		tar -zxvf Simulator-1.1.1.tar.gz 
 
-		mv Simulator-1.1.1 ./Simulator
+		mv Simulator-1.1.3 ./Simulator
 
 		cd ..
 
