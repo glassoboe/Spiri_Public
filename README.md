@@ -112,7 +112,7 @@ source /opt/ros/hydro/setup.bash
 export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:~/catkin_ws/src/Simulator/spiri_description/models
 ```
 ## Update the Simulator
-This is just for users who have previously installed Alpha 1.0 version. 
+This is just for users who have previously installed Alpha 1.0 version.
 
 ```bash
 wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/Simulator-alpha-1.1/installation_upgrade.sh
@@ -121,9 +121,25 @@ chmod +x installation_upgrade.sh
 ```
 This will update Spiris' simulator. Now you can jump to the Run the simulator section.
 
-## Install on Windows -- Coming soon
+## Install on Windows
 
 We will provide a virtual image that will contain Ubuntu 12.04 with ROS and Spiri’s simulator installed on it. You can run the virtual image using VMware player which is available free of cost.
+
+- The virtual image can be downloaded from
+
+https://www.dropbox.com/s/r7ddbupv3j7mnox/Spiri.zip
+
+- Unzip the file.
+
+- Open VMware player and choose "Open a Virtual Machine" option.
+
+- Browse to the Spiri folder and choose the Spiri.vmx file.
+
+- Click on Play virtual machine.
+
+- Username - spiri Password - spiri
+
+Everything is setup in the virtual machine. You can jump straight to the "Run the Simulator" section.
 
 ## Install on Mac -- Coming soon
 
@@ -154,9 +170,9 @@ roslaunch spiri_description spiri_citadel.launch
 roslaunch spiri_description move_it_spiri.launch
 
 ```
-In a new terminal type 
+In a new terminal type
 ```bash
-rosrun action_controller actioncontroller.py 
+rosrun action_controller actioncontroller.py
 ```
 
 Go back to the terminal where you launched move_it_spiri.launch.
@@ -167,7 +183,7 @@ This launches Spiri in an empty world with the ability to receive goals and exec
 
 Goals can be sent using our API or ROS.
 
-** The 
+** The
 ### Send goals
 
 #### API
