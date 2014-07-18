@@ -148,12 +148,22 @@ roslaunch spiri_description spiri_citadel.launch
 
 ```bash
 roslaunch spiri_description move_it_spiri.launch
+
 ```
+In a new terminal type 
+```bash
+rosrun action_controller actioncontroller.py 
+```
+
+Go back to the terminal where you launched move_it_spiri.launch.
+
+After you see the message "All is well! Everyone is happy! You can start planning now!" you can send goals.
+
 This launches Spiri in an empty world with the ability to receive goals and execute it.
 
 Goals can be sent using our API or ROS.
 
-
+** The 
 ### Send goals
 
 #### API
