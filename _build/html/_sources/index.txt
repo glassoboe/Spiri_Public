@@ -24,7 +24,10 @@ Tutorials
    perception
    API
    
+Questions
+---------
 
+Questions can be asked on `Questions <http://spiri.askbot.com/questions/>`_.
 
 .. Indices and tables
 .. ==================
