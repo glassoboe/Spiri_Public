@@ -143,9 +143,16 @@ Everything is setup in the virtual machine. You can jump straight to the "Run th
 
 ## Install on Mac -- Coming soon
 
-We will have scripts to install Spiri’s simulator on Mac.
+- The virtual image can be downloaded from
 
-We will provide a virtual image that will contain Ubuntu 12.04 with ROS and Spiri’s simulator installed on it. You can run the virtual image using VMware fusion.
+https://www.dropbox.com/s/r7ddbupv3j7mnox/Spiri.zip
+
+- Unzip the file.
+
+Open the spiri.vmnx file using vmware fusion. This will boot the virtual machine up.
+
+Everything is setup in the virtual machine. You can jump straight to the "Run the Simulator" section.
+
 
 ## Run the Simulator
 Please restart the terminal and then you will be able to run the simulator.
