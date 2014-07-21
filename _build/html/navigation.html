@@ -89,7 +89,10 @@ stack, see the documentation on the
 <h2>Using API to send goals<a class="headerlink" href="#using-api-to-send-goals" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="sending-commands-using-python">
 <h3>Sending commands using Python<a class="headerlink" href="#sending-commands-using-python" title="Permalink to this headline">¶</a></h3>
-<p>There are examples scripts located in <strong>examples</strong> folder. We have made it easy to send goals using our API.</p>
+<p>There are examples scripts located in <strong>examples</strong> folder. They can be executed using</p>
+<div class="highlight-python"><pre>&gt;$ python send_goals.py</pre>
+</div>
+<p>We have made it easy to send goals using our API.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">planner_request</span> <span class="kn">import</span> <span class="n">get_state</span>
 <span class="c"># create an object for sending commands to Spiri</span>
 <span class="n">spiri</span><span class="o">=</span><span class="n">get_state</span><span class="o">.</span><span class="n">Staterobot</span><span class="p">()</span>

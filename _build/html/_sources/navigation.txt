@@ -63,7 +63,14 @@ Using API to send goals
 Sending commands using Python
 +++++++++++
 
-There are examples scripts located in **examples** folder. We have made it easy to send goals using our API.
+There are examples scripts located in **examples** folder. They can be executed using
+
+::
+
+	>$ python send_goals.py
+	
+
+We have made it easy to send goals using our API.
 
 .. code-block:: python
 

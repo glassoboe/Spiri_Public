@@ -1,0 +1,220 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installating the Simulator &mdash; Spiri Simulator 1.1.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Spiri Simulator 1.1.1 documentation" href="index.html" />
+    <link rel="next" title="Simulating Spiri" href="simulator.html" />
+    <link rel="prev" title="Spiri Overview" href="overview.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="simulator.html" title="Simulating Spiri"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="overview.html" title="Spiri Overview"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Spiri Simulator 1.1.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installating-the-simulator">
+<h1>Installating the Simulator<a class="headerlink" href="#installating-the-simulator" title="Permalink to this headline">¶</a></h1>
+<p>We have created installation scripts to install ROS, Gazebo and Spiri&#8217;s simulator to ease the process of installing.</p>
+<p>If users already have some of the components installed they can install the rest by following the section Install different components independtly.</p>
+<p>For OSx and Windows users we have created virtual machines which can be run using VMware player in Windows and VMware Fusion in OSx.</p>
+<p>VMware player is free for use on Windows. VMware Fusion has a free trial for 30 days on OSx.</p>
+<div class="section" id="install-using-scripts-ubuntu-12-04-12-10-13-04">
+<h2>Install using Scripts - Ubuntu 12.04/12.10/13.04<a class="headerlink" href="#install-using-scripts-ubuntu-12-04-12-10-13-04" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>&gt;$ wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/Simulator-alpha-1.1/installation.sh
+&gt;$ wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/Simulator-alpha-1.1/installation_simulator.sh
+&gt;$ chmod +x installation.sh installation_simulator.sh
+&gt;$ ./installation.sh</pre>
+</div>
+<p><strong>Restart</strong> the terminal and run</p>
+<div class="highlight-python"><pre>&gt;$ ./installation_simulator.sh</pre>
+</div>
+<p>This will install ROS in <cite>/opt/</cite> and Spiri&#8217;s simulator in <cite>/home/${user}/catkin_ws/src</cite>.</p>
+</div>
+<div class="section" id="install-different-components-independently">
+<h2>Install different components independently<a class="headerlink" href="#install-different-components-independently" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Install <a class="reference external" href="http://wiki.ros.org/hydro/Installation/Ubuntu">ROS</a>.</li>
+</ul>
+<p>Install the ros-dekstop-full package as it contains Gazebo and other programs required for the simulator.</p>
+<ul class="simple">
+<li>Install Gazebo sensor plugins</li>
+</ul>
+<div class="highlight-python"><pre>&gt;$ sudo apt-get install ros-hydro-hector-quadrotor</pre>
+</div>
+<ul class="simple">
+<li>Install Controllers</li>
+</ul>
+<div class="highlight-python"><pre>&gt;$ sudo apt-get install ros-hydro-ros-controllers</pre>
+</div>
+<ul class="simple">
+<li>Install joystick drivers</li>
+</ul>
+<div class="highlight-python"><pre>&gt;$ sudo apt-get install ros-hydro-joy</pre>
+</div>
+<ul class="simple">
+<li>Create a <a class="reference external" href="http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment">ROS workspace</a>.</li>
+</ul>
+<p>After this step there should be a folder called as catkin_ws or the name you choose for your repository.</p>
+<ul class="simple">
+<li>Get the simulator</li>
+</ul>
+<div class="highlight-python"><pre>&gt;$ cd catkin_ws/src
+
+&gt;$ wget https://raw.github.com/Pleiades-Spiri/Spiri_Public/Simulator-alpha-1.1./Simulator-1.1.1.tar.gz
+
+&gt;$ tar -zxvf Simulator-1.1.1.tar.gz
+
+&gt;$ mv Simulator-1.1.1 ./Simulator
+
+&gt;$ cd .. &amp;&amp; catkin_make
+
+&gt;$ echo "export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:~/catkin_ws/src/Simulator/spiri_description/models" &gt;&gt; ~/.bashrc
+
+&gt;$ source ~/.bashrc</pre>
+</div>
+<p>This will build the simulator in your catkin_ws.</p>
+<p>Note just make sure that these commands are in your <strong>bashrc</strong></p>
+<div class="highlight-python"><pre>source ~/catkin_ws/devel/setup.bash
+
+source /opt/ros/hydro/setup.bash
+
+export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:~/catkin_ws/src/Simulator/spiri_description/models</pre>
+</div>
+</div>
+<div class="section" id="install-on-windows">
+<h2>Install on Windows<a class="headerlink" href="#install-on-windows" title="Permalink to this headline">¶</a></h2>
+<p>We will provide a virtual image that will contain Ubuntu 12.04 with ROS and Spiri’s simulator installed on it. You can run the virtual image using VMware player which is available free of cost.</p>
+<ul class="simple">
+<li>The virtual image can be downloaded from <a class="reference external" href="https://www.dropbox.com/s/r7ddbupv3j7mnox/Spiri.zip">Virtual image</a>.</li>
+<li>Unzip the file</li>
+<li>Open VMware player and choose &#8220;Open a Virtual Machine&#8221;.</li>
+</ul>
+<div class="align-centered figure align-center">
+<img alt="_images/virtual-machine-open.png" src="_images/virtual-machine-open.png" style="width: 100%;" />
+</div>
+<ul class="simple">
+<li>Browse to the Spiri Folder and choose Spiri.vmx file</li>
+</ul>
+<div class="align-centered figure align-center">
+<img alt="_images/virtual-machine-select.png" src="_images/virtual-machine-select.png" style="width: 100%;" />
+</div>
+<ul class="simple">
+<li>Click on &#8220;Play Virtual Machine&#8221;</li>
+</ul>
+<div class="align-centered figure align-center">
+<img alt="_images/virtual-machine-play.png" src="_images/virtual-machine-play.png" style="width: 100%;" />
+</div>
+<p><strong>Username</strong> - spiri <strong>Password</strong> - spiri</p>
+</div>
+<div class="section" id="install-on-osx">
+<h2>Install on OSx<a class="headerlink" href="#install-on-osx" title="Permalink to this headline">¶</a></h2>
+<p>If you are experienced with Vmware fusion then you can download the <a class="reference external" href="https://www.dropbox.com/s/r7ddbupv3j7mnox/Spiri.zip">Virtual machine</a> and load it on VMware fusion.</p>
+<p>Coming Soon.</p>
+<p>TODO Need to take screenshots</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Installating the Simulator</a><ul>
+<li><a class="reference internal" href="#install-using-scripts-ubuntu-12-04-12-10-13-04">Install using Scripts - Ubuntu 12.04/12.10/13.04</a></li>
+<li><a class="reference internal" href="#install-different-components-independently">Install different components independently</a></li>
+<li><a class="reference internal" href="#install-on-windows">Install on Windows</a></li>
+<li><a class="reference internal" href="#install-on-osx">Install on OSx</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="overview.html"
+                        title="previous chapter">Spiri Overview</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="simulator.html"
+                        title="next chapter">Simulating Spiri</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/installation.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="simulator.html" title="Simulating Spiri"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="overview.html" title="Spiri Overview"
+             >previous</a> |</li>
+        <li><a href="index.html">Spiri Simulator 1.1.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Rohan Bhargava.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
