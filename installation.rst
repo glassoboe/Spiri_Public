@@ -1,4 +1,4 @@
-Installating the Simulator
+Installing the Simulator
 ====================
 
 We have created installation scripts to install ROS, Gazebo and Spiri's simulator to ease the process of installing. 

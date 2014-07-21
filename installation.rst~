@@ -1,4 +1,4 @@
-Installating the Simulator
+Installing the Simulator
 ====================
 
 We have created installation scripts to install ROS, Gazebo and Spiri's simulator to ease the process of installing. 
@@ -127,7 +127,7 @@ We will provide a virtual image that will contain Ubuntu 12.04 with ROS and Spir
 Install on OSx
 ---------------------
 
-If you are experienced with Vmware fusion then you can download the 'Virtual machine <https://www.dropbox.com/s/r7ddbupv3j7mnox/Spiri.zip>`_ and load it on VMware fusion.
+If you are experienced with Vmware fusion then you can download the `Virtual machine <https://www.dropbox.com/s/r7ddbupv3j7mnox/Spiri.zip>`_ and load it on VMware fusion.
 
 Coming Soon. 
 
