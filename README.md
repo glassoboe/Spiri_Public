@@ -343,4 +343,5 @@ rostopic echo /altimeter
 
 ## Questions
 
-If you have any questions please send an email to rob@pleiades.ca
+You can ask your questions at spiri.askbot.com
+
