@@ -27,10 +27,11 @@ This environment includes nothing except a robot and the floor.
    :width: 100%
    :align: center
    :figclass: align-centered
+   
 
 There are several other environments:
 
-The following command launches a model Citadel Hill, Halifax.
+The following command launches a model Citadel Hill, Halifax:
 
  ::
  
