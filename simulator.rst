@@ -30,13 +30,18 @@ This environment includes nothing except a robot and the floor.
 
 There are several other environments:
 
- * ``spiri_citadel.launch`` brings up the Citadel Hill.
- * More enviornments will be added before the final realease
+ ::
+ 
+ >$ roslaunch spiri_description spiri_citadel.launch
+ 
+ This environment is a model Citadel Hill, Halifax.
 
 .. figure:: images/gazebo-simulation-launch-citadel.png
    :width: 100%
    :align: center
    :figclass: align-centered
+   
+*More enviornments will be added before the final realease
 
 Teleoperating the Simulated Spiri
 ---------------------------------
