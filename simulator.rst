@@ -30,11 +30,13 @@ This environment includes nothing except a robot and the floor.
 
 There are several other environments:
 
+The following command launches a model Citadel Hill, Halifax.
+
  ::
  
- >$ roslaunch spiri_description spiri_citadel.launch
+    >$ roslaunch spiri_description spiri_citadel.launch
  
- This command launches a model Citadel Hill, Halifax.
+ 
 
 .. figure:: images/gazebo-simulation-launch-citadel.png
    :width: 100%
@@ -70,6 +72,8 @@ drive the robot around.
    m    ,    .
   p   : move up in z direction
   ;   : move down in z directions
+  h   : hover
+  n   : land
   Press any other key to stop the robot
 
 Now, if you press the 'p' key, the robot will go up.
