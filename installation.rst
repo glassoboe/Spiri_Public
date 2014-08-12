@@ -95,7 +95,7 @@ Note just make sure that these commands are in your **bashrc**
 Install on Windows
 ---------------------
 
-We have created a virtual image which contains Ubuntu 12.04 with ROS and Spiri’s simulator. You can run the virtual image using VMware player which is available free of cost.
+We have created a virtual image which contains Ubuntu 12.04 with ROS and Spiri’s simulator. You can run the virtual image using `VMware Player <https://http://www.vmware.com/products/player>`_ which is available free of cost.
 
 - Download the virtual image `here <https://www.dropbox.com/s/r7ddbupv3j7mnox/Spiri.zip>`_.
 
