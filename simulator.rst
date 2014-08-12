@@ -34,7 +34,7 @@ There are several other environments:
  
  >$ roslaunch spiri_description spiri_citadel.launch
  
- This environment is a model Citadel Hill, Halifax.
+ This command launches a model Citadel Hill, Halifax.
 
 .. figure:: images/gazebo-simulation-launch-citadel.png
    :width: 100%
