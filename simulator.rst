@@ -15,7 +15,11 @@ Starting the Simulator
 ----------------------
 
 To start the simulator, you will run one of several roslaunch files. Each roslaunch file
-brings up a different environment. The simplest environment is started by running:
+brings up a different environment. 
+
+* The shortcut for opening terminal in Ubuntu is Ctrl+Alt+t
+
+The simplest environment is started by running the following command in terminal:
 
 ::
 
@@ -82,6 +86,8 @@ Now, if you press the 'p' key, the robot will go up.
 One thing to note is how the topics are connected.
 The **keyboard_teleop** or **quadrotor_teleop**
 node publishes to a topic called ``cmd_vel``. The controllers for Spiri listens to the ``cmd_vel`` topic and translate the velocity to thrust and force to move Spiri in the simulator.
+
+*If you are new to Ubuntu and are using the telop commands, it's useful to know you can have multiple windows running at once
 
 Differences and Limitations
 ---------------------------
