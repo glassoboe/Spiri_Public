@@ -95,9 +95,9 @@ Note just make sure that these commands are in your **bashrc**
 Install on Windows
 ---------------------
 
-We will provide a virtual image that will contain Ubuntu 12.04 with ROS and Spiri’s simulator installed on it. You can run the virtual image using VMware player which is available free of cost.
+We have created a virtual image which contains Ubuntu 12.04 with ROS and Spiri’s simulator. You can run the virtual image using VMware player which is available free of cost.
 
-- The virtual image can be downloaded from `Virtual image <https://www.dropbox.com/s/r7ddbupv3j7mnox/Spiri.zip>`_.
+- Download the virtual image `here <https://www.dropbox.com/s/r7ddbupv3j7mnox/Spiri.zip>`_.
 
 - Unzip the file
 
@@ -127,14 +127,31 @@ We will provide a virtual image that will contain Ubuntu 12.04 with ROS and Spir
 Install on OSx
 ---------------------
 
-If you are experienced with Vmware fusion then you can download the `Virtual machine <https://www.dropbox.com/s/r7ddbupv3j7mnox/Spiri.zip>`_ and load it on VMware fusion.
+We have created a virtual image which contains Ubuntu 12.04 with ROS and Spiri’s simulator. You can run the virtual image using `VMware Fusion <http://www.vmware.com/products/fusion>`_ which is available as a 30-day free trial.
 
-Coming Soon. 
+- Download the virtual image `here <https://www.dropbox.com/s/r7ddbupv3j7mnox/Spiri.zip>`_.
 
-TODO Need to take screenshots
+- Unzip the file
 
+- Open VMware Fusion and choose "Open a Virtual Machine".
 
+.. figure:: images/virtual-machine-open.png
+   :width: 100%
+   :align: center
+   :figclass: align-centered
 
+- Browse to the Spiri Folder and choose Spiri.vmx file
 
+.. figure:: images/virtual-machine-select.png
+   :width: 100%
+   :align: center
+   :figclass: align-centered
 
+- Click on "Play Virtual Machine"
 
+.. figure:: images/virtual-machine-play.png
+   :width: 100%
+   :align: center
+   :figclass: align-centered
+
+**Username** - spiri **Password** - spiri
