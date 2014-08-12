@@ -35,7 +35,7 @@ This environment includes nothing except a robot and the floor.
 
 There are several other environments:
 
-The following command launches a model Citadel Hill, Halifax:
+The following command launches a model of Citadel Hill, Halifax:
 
  ::
  
@@ -64,7 +64,7 @@ drive the robot around.
     >$ roslaunch spiri_teleop logitech_gamepad.launch
     >$ roslaunch spiri_telop  xbox_controller.launch
 
-* The **keyboard_telop** node allows you to do this:
+* The **keyboard_teleop** node allows you to do this:
 
 ::
 
@@ -87,7 +87,6 @@ One thing to note is how the topics are connected.
 The **keyboard_teleop** or **quadrotor_teleop**
 node publishes to a topic called ``cmd_vel``. The controllers for Spiri listens to the ``cmd_vel`` topic and translate the velocity to thrust and force to move Spiri in the simulator.
 
-*If you are new to Ubuntu and are using the telop commands, it's useful to know you can have multiple windows running at once
 
 Differences and Limitations
 ---------------------------
