@@ -129,7 +129,7 @@ Install on OSx
 
 We have created a virtual image which contains Ubuntu 12.04 with ROS and Spiri’s simulator. You can run the virtual image using `VMware Fusion <http://www.vmware.com/products/fusion>`_ which is available as a 30-day free trial.
 
-- Download the virtual image `here <https://www.dropbox.com/s/r7ddbupv3j7mnox/Spiri.zip>`_.
+- Download the virtual image `here <https://www.dropbox.com/s/prigf9zj7vsy63y/Spiri_Mac.zip>`_.
 
 - Unzip the file
 
