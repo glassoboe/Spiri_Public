@@ -23,6 +23,8 @@ These are available over ROS topics, of both ``sensor_msgs/Image`` and
 View the camera images
 +++++++++++
 
+*Run each command in a separate terminal
+
 View the front left camera
 
 ::
