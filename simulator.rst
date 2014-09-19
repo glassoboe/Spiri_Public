@@ -59,6 +59,7 @@ drive the robot around.
 
 * Using Joystick such as logitech gamepad or xbox 360 controller:
 
+In a new terminal window:
 ::
 
     >$ roslaunch spiri_teleop logitech_gamepad.launch
@@ -66,6 +67,7 @@ drive the robot around.
 
 * The **keyboard_teleop** node allows you to do this:
 
+In a new terminal window:
 ::
 
     >$ roslaunch spiri_teleop keyboard_teleop.launch
