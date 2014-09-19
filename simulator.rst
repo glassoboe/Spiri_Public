@@ -57,7 +57,7 @@ The **spiri_teleop** package includes a number of scripts for commanding the rob
 to move its joints in certain ways. The first thing you probably want to do is
 drive the robot around. 
 
-* Using Joystick such as logitech gamepad or xbox 360 controller:
+* Using Joystick such as logitech gamepad or xbox 360 controller
 
 In a new terminal window:
 ::
@@ -65,12 +65,13 @@ In a new terminal window:
     >$ roslaunch spiri_teleop logitech_gamepad.launch
     >$ roslaunch spiri_telop  xbox_controller.launch
 
-* The **keyboard_teleop** node allows you to do this:
+* The **keyboard_teleop** node allows you to control Spiri with your computer keyboard
 
 In a new terminal window:
 ::
 
     >$ roslaunch spiri_teleop keyboard_teleop.launch
+    
     Reading from keyboard
     -------------------------
    Moving around:
