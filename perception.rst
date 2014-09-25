@@ -69,8 +69,6 @@ View the depth map
 Access camera data using API
 -------------------------
 
-Coming Soon
-
-TODO. 
+Coming Soon.
 
 
