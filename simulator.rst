@@ -102,7 +102,7 @@ Differences and Limitations
 The simulated robot is not exactly the same as the real robot. Notable differences
 include:
 
-TODO.
+Coming soon.
 
 
 
