@@ -20,7 +20,6 @@ brings up a different environment.
 * The shortcut for opening terminal in Ubuntu is Ctrl+Alt+t
 
 The simplest environment is started by running the following command in terminal:
-
 ::
 
     >$ roslaunch spiri_description spiri_empty_world.launch
@@ -49,6 +48,12 @@ The following command launches a model of Citadel Hill, Halifax:
    :figclass: align-centered
    
 *More enviornments will be added before the final realease
+
+Following Spiri in your Scene
+----------------------------
+
+Follow Spiri by selecting World> Models> from the left hand menu. Right click on Spiri to open a pop-up menu, select Follow.
+
 
 Teleoperating the Simulated Spiri
 ---------------------------------
